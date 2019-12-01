@@ -1,0 +1,34 @@
+<div class="element-bg-img"><img [src]= selectPlace.img alt="" style="width: 100%"></div>
+<div class="element-left-bottom">
+  <div class="ele-strip">
+    <ul>
+      <li (click)="$event.preventDefault(); setPlaceChoose(placeData)"
+          *ngFor="let placeData of placesData | typesFilter"><a href="">{{placeData.type}}</a></li>
+    </ul>
+  </div>
+  <div class="village">
+    <h3>{{selectPlace.type}}</h3>
+    <span class="line"> </span>
+    <div class="activity_box">
+      <div class="scrollbar" id="style-2">
+        <ng-container *ngFor="let placeData of placesData">
+        <div *ngIf="placeData.type === selectPlace.type" class="activity-row"
+             (click)="$event.preventDefault(); setPlaceChoose(placeData)">
+          <div class="activity-desc">
+            <h5>Address:</h5>
+            <p>{{placeData.address}}</p>
+            <h6>Tel: {{placeData.phone.toString() | phone}}</h6>
+          </div>
+          <div class="activity-img">
+            <ul>
+              <li><img [src]="placeData.img" alt=""/></li>
+              <li><img [src]="placeData.social_info.img" alt=""/></li>
+            </ul>
+          </div>
+          <div class="clear"></div>
+        </div>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</div>

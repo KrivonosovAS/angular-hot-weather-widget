@@ -1,0 +1,17 @@
+<body>
+<h1>Hot Weather Widget</h1>
+<div class="element" *ngIf="placesData$ | async as placesData; else loader">
+  <div class="element-left">
+    <app-places (placeSelectEvent)="setCurrentPlace($event)" [placesData]="placesData" ></app-places>
+  </div>
+  <div class="element-right">
+    <app-weather [currentPlace]="currentPlace"></app-weather>
+    <app-followers [currentPlace]="currentPlace"></app-followers>
+  </div>
+</div>
+
+<ng-template #loader>
+  <div class="spinner">
+    <mat-spinner></mat-spinner>
+  </div>
+</ng-template>
